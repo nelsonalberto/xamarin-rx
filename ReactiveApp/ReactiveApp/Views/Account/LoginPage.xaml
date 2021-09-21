@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:renders="clr-namespace:ReactiveApp.Renders"
+             x:Class="ReactiveApp.Views.Account.LoginPage">
+    <ContentPage.Content>
+        <Frame  Padding="15">
+            <StackLayout Spacing="15">
+                <Label Text="Login Reactive Properties" Style="{StaticResource LabelTitle}" HorizontalTextAlignment="Center" />
+
+                <Label Text="Username: " Style="{StaticResource LabelMedium}"/>
+                <renders:CustomEntry Text="{Binding UserName.Value}" Placeholder="Username" />
+
+                <Label Text="Password: " Style="{StaticResource LabelMedium}"/>
+                <renders:CustomEntry Text="{Binding Password.Value}" Placeholder="Password" IsPassword="True" />
+                
+                <Button Text="Login" Style="{StaticResource PrimaryButton}" Command="{Binding SubmitCommand}" />
+
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>
