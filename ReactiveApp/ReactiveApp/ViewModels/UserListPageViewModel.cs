@@ -19,13 +19,13 @@ namespace ReactiveApp.ViewModels
     public class UserListPageViewModel: BaseViewModel
     {
         #region Properties
-        public ReactiveProperty<ObservableCollection<UserResponse>> UserListing { get; set; }
+        public ReactiveCollection<UserResponse> UserListing { get; set; }
         #endregion
 
         #region Constructor
         public UserListPageViewModel(UserListPage page) 
         {
-            UserListing = new ReactiveProperty<ObservableCollection<UserResponse>>();
+            UserListing = new ReactiveCollection<UserResponse>();
 
             Observable
                 .FromAsync(() => _httpClient.GetAsync(Constants.UserUrl))
@@ -38,9 +38,8 @@ namespace ReactiveApp.ViewModels
                 })
                 .Subscribe(x => 
                 {
-                    UserListing.Value = new ObservableCollection<UserResponse>(x); 
+                    UserListing.AddRangeOnScheduler(x);
                 });
-
 
             page.WhenTappedList.Subscribe(x => 
             {

@@ -5,7 +5,7 @@
              Title="User Listing">
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding UserListing.Value}" HasUnevenRows="True" x:Name="ListView">
+            <ListView ItemsSource="{Binding UserListing}" HasUnevenRows="True" x:Name="ListView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
